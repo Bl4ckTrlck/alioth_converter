@@ -1,0 +1,20 @@
+# Remove all existing dynamic partitions and groups before applying full OTA
+remove_all_groups
+add_group qti_dynamic_partitions_a 9122611200
+add_group qti_dynamic_partitions_b 9122611200
+add odm_a qti_dynamic_partitions_a
+add odm_b qti_dynamic_partitions_b
+add product_a qti_dynamic_partitions_a
+add product_b qti_dynamic_partitions_b
+add system_a qti_dynamic_partitions_a
+add system_b qti_dynamic_partitions_b
+add system_ext_a qti_dynamic_partitions_a
+add system_ext_b qti_dynamic_partitions_b
+add vendor_a qti_dynamic_partitions_a
+add vendor_b qti_dynamic_partitions_b
+#op_list
+resize odm_a 134729728
+resize product_a 2001195008
+resize system_a 3668905984
+resize system_ext_a 889376768
+resize vendor_a 2033176576
