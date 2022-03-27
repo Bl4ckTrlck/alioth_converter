@@ -1,8 +1,9 @@
 export CURRENTUSER=$(whoami)
 SCRIPTDIR=$(readlink -f "$0")
 CURRENTDIR=$(dirname "$SCRIPTDIR")
-CURRENTUSER=$2
+CURRENTUSER=$3
 ZIP=$1
+NEKO=$2
 AT=$CURRENTDIR/AT
 MA=$CURRENTDIR/MA
 MK=$CURRENTDIR/MK
@@ -20,7 +21,7 @@ DD=/mnt/pro2
 EE=/mnt/odm2
 rm -r $AT $MA || true
 mkdir $AT $MA || true
-
+rm -r $CURRENTDIR/MIUI* || true
 
 #PAYLOAD
 if unzip -d $AT $ZIP payload.bin
@@ -207,13 +208,12 @@ mkdir $RZIP/firmware-update
 mv $CURRENTDIR/MK/* $RZIP/firmware-update/
 cd $RZIP
 zip -ry MIUI_Alioth_$ROMVERSION-$ROMBUILD-v$ROMANDROID.zip *
-
-mv $RZIP/MIUI* $CURRENTDIR/ && mv $CURRENTDIR/MIUI* ..
-cd $CURRENTDIR && cd ..
-sudo chmod -R 777 MIUI_Alioth*
-else
-echo
+mv $RZIP/MIUI* $CURRENTDIR/ 
+mv $CURRENTDIR/MIUI_Alioth* $NEKO/
 sudo rm -r $AT $MA $MK $MN $RZIP
+chmod -R 777 $NEKO/MIUI_Alioth*
+exit
+else
 echo "saltando payload.bin"
 sleep 3s
 fi
@@ -400,19 +400,17 @@ rm -rf $MA/output/odm.new.dat
 #FINIZI
 cd ..
 mv $MA/output/* $RZIP/
-mv $AT/output/boot.img $RZIP/
-mv $AT/output/vendor_boot.img $RZIP/
+mv $AT/images/boot.img $RZIP/
+mv $AT/images/vendor_boot.img $RZIP/
 mkdir $RZIP/firmware-update
 mv $CURRENTDIR/MK/* $RZIP/firmware-update/
 cd $RZIP
 zip -ry MIUI_Alioth_$ROMVERSION-$ROMBUILD-v$ROMANDROID.zip *
-mv $RZIP/MIUI* $CURRENTDIR/ && mv $CURRENTDIR/MIUI* ..
-cd $CURRENTDIR && cd ..
-sudo chmod -R 777 MIUI_Alioth*
-
-
+mv $RZIP/MIUI* $CURRENTDIR/ 
+mv $CURRENTDIR/MIUI_Alioth* $NEKO/
+sudo rm -r $AT $MA $MK $MN $RZIP
+chmod -R 777 $NEKO/MIUI_Alioth*
 else
-echo
 echo "Saltando fastboot zip"
 sleep 3s
 fi
