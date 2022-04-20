@@ -123,7 +123,6 @@ sudo cp -Raf $EE/* $E/
 ROMVERSION=$(grep ro.system.build.version.incremental= $A/system/build.prop | sed "s/ro.system.build.version.incremental=//g"; )
 ROMANDROID=$(grep ro.build.version.release= $A/system/build.prop | sed "s/ro.build.version.release=//g"; )
 ROMBUILD=$(grep ro.build.id= $A/system/build.prop | sed "s/ro.build.id=//g"; )
-
 sudo umount /mnt/*
 
 #ZIPF
@@ -146,7 +145,7 @@ sed -i "s/dac/$productop/g" $RZIP/dynamic_partitions_op_list
 odmop=`du -b $MN/odm.img | awk '{print $1}'`
 sed -i "s/lam/$odmop/g" $RZIP/dynamic_partitions_op_list
 
-let SUMATO=$systemop+$system_extop+vendorop+productop+odmop
+let SUMATO=$systemop+$system_extop+$vendorop+$productop+$odmop
 sleep 2s
 echo
 echo "limite de oplist 9122611200"
@@ -321,7 +320,6 @@ sudo cp -Raf $EE/* $E/
 ROMVERSION=$(grep ro.system.build.version.incremental= $A/system/build.prop | sed "s/ro.system.build.version.incremental=//g"; )
 ROMANDROID=$(grep ro.build.version.release= $A/system/build.prop | sed "s/ro.build.version.release=//g"; )
 ROMBUILD=$(grep ro.build.id= $A/system/build.prop | sed "s/ro.build.id=//g"; )
-
 sudo umount /mnt/*
 
 #ZIPF
@@ -344,7 +342,7 @@ sed -i "s/dac/$productop/g" $RZIP/dynamic_partitions_op_list
 odmop=`du -b $MN/odm.img | awk '{print $1}'`
 sed -i "s/lam/$odmop/g" $RZIP/dynamic_partitions_op_list
 
-let SUMATO=$systemop+$system_extop+vendorop+productop+odmop
+let SUMATO=$systemop+$system_extop+$vendorop+$productop+$odmop
 sleep 2s
 echo
 echo "limite de oplist 9122611200"
