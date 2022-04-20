@@ -206,7 +206,7 @@ mv $AT/output/vendor_boot.img $RZIP/
 mkdir $RZIP/firmware-update
 mv $CURRENTDIR/MK/* $RZIP/firmware-update/
 cd $RZIP
-zip -ry MIUI_Alioth_$ROMVERSION-$ROMBUILD-v$ROMANDROID.zip *
+zip -ry MIUI_Alioth_RW_$ROMVERSION-$ROMBUILD-v$ROMANDROID.zip *
 mv $RZIP/MIUI* $CURRENTDIR/ 
 mv $CURRENTDIR/MIUI_Alioth* $NEKO/
 sudo rm -r $AT $MA $MK $MN $RZIP
@@ -403,7 +403,7 @@ mv $AT/images/vendor_boot.img $RZIP/
 mkdir $RZIP/firmware-update
 mv $CURRENTDIR/MK/* $RZIP/firmware-update/
 cd $RZIP
-zip -ry MIUI_Alioth_$ROMVERSION-$ROMBUILD-v$ROMANDROID.zip *
+zip -ry MIUI_Alioth_RW_$ROMVERSION-$ROMBUILD-v$ROMANDROID.zip *
 mv $RZIP/MIUI* $CURRENTDIR/ 
 mv $CURRENTDIR/MIUI_Alioth* $NEKO/
 sudo rm -r $AT $MA $MK $MN $RZIP
